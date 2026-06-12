@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Suporte — Corpo Leve 21D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="bg-decor" aria-hidden="true">
+  <span class="bg-texture"></span>
+  <span class="blob blob-1"></span>
+  <span class="blob blob-3"></span>
+</div>
+
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="brand">Corpo&nbsp;Leve <span>21D</span></a>
+    <a href="index.html" class="btn btn--mini">Voltar ao site</a>
+  </div>
+</header>
+
+<main class="legal">
+  <a href="index.html" class="legal__back">Voltar para a página inicial</a>
+  <h1>Suporte</h1>
+  <p class="legal__intro">Precisa de ajuda com o acesso, quer tirar uma dúvida ou solicitar reembolso dentro da garantia de 7 dias? É só falar com a gente pelo e-mail abaixo.</p>
+
+  <div class="support-box">
+    <span class="support-box__label">E-mail de suporte</span>
+    <span class="support-box__email" id="supEmail">corpoleve21d@outlook.com</span>
+    <div class="support-box__actions">
+      <button type="button" class="btn btn--primary" id="copyBtn">Copiar e-mail</button>
+      <a href="mailto:corpoleve21d@outlook.com" class="btn btn--ghost">Abrir no meu app de e-mail</a>
+    </div>
+    <p class="support-box__hint" id="copyHint" aria-live="polite"></p>
+  </div>
+
+  <h2>Como funciona o atendimento</h2>
+  <ul>
+    <li>Atendemos por e-mail, normalmente em até <strong>48 horas úteis</strong>.</li>
+    <li>Para agilizar, envie o <strong>e-mail usado na compra</strong> e descreva a sua dúvida.</li>
+    <li>Reembolsos podem ser solicitados dentro dos <strong>7 dias</strong> de garantia.</li>
+  </ul>
+
+  <p class="legal__disc">Este material é educativo e não substitui orientação individualizada de nutricionista, médico ou outro profissional de saúde.</p>
+
+  <a href="index.html" class="btn btn--ghost">Voltar para a página inicial</a>
+</main>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copyBtn');
+    var hint = document.getElementById('copyHint');
+    var email = document.getElementById('supEmail').textContent.trim();
+    btn.addEventListener('click', function () {
+      function ok() { hint.textContent = '✓ E-mail copiado! Agora é só colar no seu e-mail.'; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(ok).catch(fallback);
+      } else { fallback(); }
+      function fallback() {
+        var t = document.createElement('textarea');
+        t.value = email; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); ok(); }
+        catch (e) { hint.textContent = 'Copie manualmente: ' + email; }
+        document.body.removeChild(t);
+      }
+    });
+  })();
+</script>
+</body>
+</html>
